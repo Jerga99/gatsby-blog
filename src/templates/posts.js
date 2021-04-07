@@ -11,7 +11,7 @@ export default function Posts({pageContext: {posts}}) {
       <ul>
         { posts.map(post =>
           <li key={post.id}>
-            <Link to="/">{post.title}</Link>
+            <Link to={`/posts/${post.id}`}>{post.title}</Link>
           </li>
           )
         }
