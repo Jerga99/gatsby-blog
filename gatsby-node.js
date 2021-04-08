@@ -24,6 +24,11 @@ exports.createPages = async ({actions: {createPage}}) => {
 exports.createSchemaCustomization = ({actions}) => {
   const { createTypes } = actions
   const typeDefs = `
+    type PostContent {
+      title: String
+      text: String
+    }
+
     type PostJson {
       id: ID
       title: String
@@ -32,6 +37,7 @@ exports.createSchemaCustomization = ({actions}) => {
       isActive: Boolean
       rating: Float
       tags: [String!]!
+      content: PostContent
     }
   `
 
@@ -51,14 +57,22 @@ exports.createResolvers = ({createResolvers}) => {
             wordCount: 200,
             isActive: true,
             rating: 4.23,
-            tags: ["Programming", "Developement", "React JS"]
+            tags: ["Programming", "Developement", "React JS"],
+            content: {
+              text: "My content text",
+              title: "My context title"
+            }
           }, {
             id: "2",
             title: "Hello World 2",
             wordCount: 300,
             isActive: false,
             rating: 2.23,
-            tags: ["Angular", "Developement", "React JS"]
+            tags: ["Angular", "Developement", "React JS"],
+            content: {
+              text: "My content text",
+              title: "My context title"
+            }
           }]
         }
       }
