@@ -49,8 +49,13 @@ exports.createResolvers = ({createResolvers}) => {
     Query: {
       allPost: {
         type: ["PostJson"],
-        resolve() {
-          return [{
+        args: {
+          filter: "String",
+          limit: "Int"
+        },
+        resolve(source, args, context, info) {
+          const { filter } = args
+          const posts = [{
             id: "1",
             title: "Hello World",
             body: "My custom text",
@@ -74,6 +79,12 @@ exports.createResolvers = ({createResolvers}) => {
               title: "My context title"
             }
           }]
+
+          if (filter) {
+            return posts.filter(post => post.title === filter)
+          }
+
+          return posts;
         }
       }
     }
