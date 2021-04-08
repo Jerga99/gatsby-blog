@@ -20,3 +20,36 @@ exports.createPages = async ({actions: {createPage}}) => {
     context: { posts }
   })
 }
+
+exports.createSchemaCustomization = ({actions}) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type PostJson {
+      title: String
+      body: String
+    }
+  `
+
+  createTypes(typeDefs)
+}
+
+exports.createResolvers = ({createResolvers}) => {
+  const resolvers = {
+    Query: {
+      allPost: {
+        type: ["PostJson"],
+        resolve() {
+          return [{
+            title: "Hello World",
+            body: "My custom text"
+          }, {
+            title: "Hello World 2",
+            body: "My custom text 2"
+          }]
+        }
+      }
+    }
+  }
+
+  createResolvers(resolvers)
+}
