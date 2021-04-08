@@ -25,8 +25,12 @@ exports.createSchemaCustomization = ({actions}) => {
   const { createTypes } = actions
   const typeDefs = `
     type PostJson {
+      id: ID
       title: String
       body: String
+      wordCount: Int
+      isActive: Boolean
+      rating: Float
     }
   `
 
@@ -40,11 +44,19 @@ exports.createResolvers = ({createResolvers}) => {
         type: ["PostJson"],
         resolve() {
           return [{
+            id: "1",
             title: "Hello World",
-            body: "My custom text"
+            body: "My custom text",
+            wordCount: 200,
+            isActive: true,
+            rating: 4.23
           }, {
+            id: "2",
             title: "Hello World 2",
-            body: "My custom text 2"
+            body: "My custom text 2",
+            wordCount: 300,
+            isActive: false,
+            rating: 2.23
           }]
         }
       }
