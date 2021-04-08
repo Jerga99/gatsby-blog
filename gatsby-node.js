@@ -31,6 +31,7 @@ exports.createSchemaCustomization = ({actions}) => {
       wordCount: Int
       isActive: Boolean
       rating: Float
+      tags: [String!]!
     }
   `
 
@@ -49,14 +50,15 @@ exports.createResolvers = ({createResolvers}) => {
             body: "My custom text",
             wordCount: 200,
             isActive: true,
-            rating: 4.23
+            rating: 4.23,
+            tags: ["Programming", "Developement", "React JS"]
           }, {
             id: "2",
             title: "Hello World 2",
-            body: "My custom text 2",
             wordCount: 300,
             isActive: false,
-            rating: 2.23
+            rating: 2.23,
+            tags: ["Angular", "Developement", "React JS"]
           }]
         }
       }
