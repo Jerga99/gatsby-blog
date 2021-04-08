@@ -24,20 +24,10 @@ exports.createPages = async ({actions: {createPage}}) => {
 exports.createSchemaCustomization = ({actions}) => {
   const { createTypes } = actions
   const typeDefs = `
-    type PostContent {
-      title: String
-      text: String
-    }
-
     type PostJson {
       id: ID
       title: String
       body: String
-      wordCount: Int
-      isActive: Boolean
-      rating: Float
-      tags: [String!]!
-      content: PostContent
     }
 
     input TitleFilter {
@@ -58,34 +48,12 @@ exports.createResolvers = ({createResolvers}) => {
           filter: `input PostFilterInput { title: TitleFilter }`,
           limit: "Int"
         },
-        resolve(source, { filter }, context, info) {
+        async resolve(source, { filter }, context, info) {
           const { title } = filter || {}
           const { eq } = title || {}
 
-          const posts = [{
-            id: "1",
-            title: "Hello World",
-            body: "My custom text",
-            wordCount: 200,
-            isActive: true,
-            rating: 4.23,
-            tags: ["Programming", "Developement", "React JS"],
-            content: {
-              text: "My content text",
-              title: "My context title"
-            }
-          }, {
-            id: "2",
-            title: "Hello World 2",
-            wordCount: 300,
-            isActive: false,
-            rating: 2.23,
-            tags: ["Angular", "Developement", "React JS"],
-            content: {
-              text: "My content text",
-              title: "My context title"
-            }
-          }]
+          const res = await axios.get("https://jsonplaceholder.typicode.com/posts")
+          const posts = res.data
 
           if (eq) {
             return posts.filter(post => post.title === eq)
