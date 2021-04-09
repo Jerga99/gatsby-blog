@@ -1,3 +1,10 @@
+---
+title: Learn Programming in JS
+subtitle: learn programing, its super cool!
+date: 2021-10-10
+myOtherField: asjhdbahdahjdajhdjhabd
+---
+
 ## Emphasis
 
 **This is bold text**
