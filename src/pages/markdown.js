@@ -16,6 +16,7 @@ export default function Markdown({data}) {
             <span> - {frontmatter.date}</span>
           </h3>
           <p>{excerpt}</p>
+          <p>{frontmatter.slug}</p>
         </div>
         )}
     </Layout>
@@ -31,6 +32,7 @@ export const query = graphql`
         frontmatter {
           title
           date(formatString: "DD MMMM, YYYY")
+          slug
         }
         excerpt
       }

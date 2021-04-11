@@ -2,7 +2,7 @@
 title: Learn Programming in JS
 subtitle: learn programing, its super cool!
 date: 2021-10-10
-myOtherField: asjhdbahdahjdajhdjhabd
+slug: learn-programming-in-js
 ---
 
 ## Emphasis

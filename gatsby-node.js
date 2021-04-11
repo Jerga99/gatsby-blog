@@ -10,7 +10,7 @@ exports.createPages = async ({graphql, actions: {createPage}}) => {
     query {
       allMarkdownRemark {
         nodes {
-          fields {
+          frontmatter {
             slug
           }
         }
@@ -21,10 +21,10 @@ exports.createPages = async ({graphql, actions: {createPage}}) => {
 
   nodes.forEach(node => {
     createPage({
-      path: node.fields.slug,
+      path: node.frontmatter.slug,
       component: require.resolve("./src/templates/blog.js"),
       context: {
-        slug: node.fields.slug
+        slug: node.frontmatter.slug
       }
     })
   })
@@ -75,16 +75,16 @@ exports.sourceNodes = async ({actions, createNodeId, createContentDigest}) => {
   })
 }
 
-exports.onCreateNode = ({node, getNode, actions}) => {
+// exports.onCreateNode = ({node, getNode, actions}) => {
 
-  if (node.internal.type === "MarkdownRemark") {
-    const slug = createFilePath({node, getNode, basePath: "blogs"})
+//   if (node.internal.type === "MarkdownRemark") {
+//     const slug = createFilePath({node, getNode, basePath: "blogs"})
 
-    actions.createNodeField({
-      node,
-      name: "slug",
-      value: slug
-    })
-  }
-}
+//     actions.createNodeField({
+//       node,
+//       name: "slug",
+//       value: slug
+//     })
+//   }
+// }
 

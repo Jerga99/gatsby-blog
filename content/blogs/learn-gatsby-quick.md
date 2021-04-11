@@ -2,7 +2,7 @@
 title: Learn Gatsby Fast
 subtitle: Learn Gatsy now, its super!
 date: 2021-05-10
-myOtherField: asjhdbahdahjdajhdjhabd
+slug: learn-gatsby-quick
 ---
 
 # h1 Heading 8-)
