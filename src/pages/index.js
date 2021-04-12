@@ -3,9 +3,9 @@ import React from "react"
 import Layout from "../components/Layout"
 import { graphql, Link } from "gatsby"
 import FeaturedBlog from "../components/FeaturedBlog"
+import BlogListing from "../components/BlogListing"
 
 export default function IndexPage({data}) {
-
   const { nodes } = data.allMarkdownRemark
   return (
     <Layout>
@@ -16,6 +16,9 @@ export default function IndexPage({data}) {
           </div>
           )
         }
+      </div>
+      <div className="p-4">
+        <BlogListing blogs={nodes} />
       </div>
     </Layout>
   )
