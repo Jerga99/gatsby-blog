@@ -3,6 +3,7 @@ title: Learn Programming in JS
 subtitle: learn programing, its super cool!
 date: 2021-10-10
 slug: learn-programming-in-js
+author: Filip Jerga
 ---
 
 ## Emphasis
