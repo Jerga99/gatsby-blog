@@ -4,6 +4,7 @@ subtitle: Learn Gatsy now, its super!
 date: 2021-05-10
 slug: learn-gatsby-quick
 author: Filip Jerga
+rating: 1
 ---
 
 # h1 Heading 8-)

@@ -4,6 +4,7 @@ subtitle: Learn something new, design pattern are still cool!
 date: 2021-11-11
 slug: js-design-patterns
 author: Filip Jerga
+rating: 4
 ---
 
 ## Learn something new, design pattern are still cool
