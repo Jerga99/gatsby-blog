@@ -23,6 +23,7 @@ exports.createPages = async ({graphql, actions: {createPage}}) => {
       component: require.resolve("./src/templates/blogsPaginated"),
       context: {
         limit: itemsPerPage,
+        skip: i * itemsPerPage,
         currentPage: page,
         numOfPages
       }
