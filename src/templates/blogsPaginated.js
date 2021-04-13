@@ -61,6 +61,7 @@ export const query = graphql`
       limit: $limit,
       skip: $skip) {
       nodes {
+        id
         frontmatter {
           subtitle
           title
