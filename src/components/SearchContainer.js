@@ -1,5 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import * as JsSearch from "js-search"
 import * as styles from "./SearchContainer.module.scss"
+import searchIndex from "./searchIndex.json"
 
 export default function SearchContainer() {
   const [search, setSearch] = useState({
@@ -13,6 +15,21 @@ export default function SearchContainer() {
       subtitle: "blog 2 subtitle"
     }]
   })
+
+  useEffect(() => {
+    rebuildIndex();
+  }, [])
+
+
+  const rebuildIndex = () => {
+    const searchEngine = new JsSearch.Search("slug")
+    searchEngine.addIndex("title")
+    searchEngine.addIndex("subtitle")
+    searchEngine.addDocuments(searchIndex.blogs)
+
+    const search1 = searchEngine.search('Learn')
+    const search2 = searchEngine.search('Gatsy')
+  }
 
   return (
     <div>
