@@ -12,8 +12,8 @@ exports.createPages = async ({graphql, actions: {createPage}}) => {
     }
   `)
   const { nodes } = result.data.allMarkdownRemark
-  const itemsPerPage = 2
-  const numOfPages = Math.ceil(nodes.length / 2)
+  const itemsPerPage = 1
+  const numOfPages = Math.ceil(nodes.length / itemsPerPage)
 
   Array.from({length: numOfPages}).forEach((_, i) => {
     const page = i + 1
