@@ -28,10 +28,10 @@ export default function SearchContainer() {
   }, [rebuildIndex])
 
   const performSearch = (e) => {
-    setSearch({...search, query: e.target.value})
+    const { value } = e.target;
+    const results = search.engine.search(value)
+    setSearch({...search, results, query: value})
   }
-
-  console.log(search.query)
 
   return (
     <div>
