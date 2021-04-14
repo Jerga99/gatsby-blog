@@ -11,7 +11,10 @@ export default function IndexPage({data, pageContext}) {
   const { nodes } = data.allMarkdownRemark
   return (
     <Layout>
-      <Seo />
+      <Seo
+        title="Home"
+        description="Code space is aiming to be the best platform to learn programming"
+      />
       <div className="columns">
         { nodes.slice(0, 2).map(node =>
           <div key={node.id} className="column">

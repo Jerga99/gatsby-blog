@@ -3,7 +3,7 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-export default function Seo() {
+export default function Seo({title, description}) {
 
   const { site } = useStaticQuery(
     graphql`
@@ -18,16 +18,19 @@ export default function Seo() {
     `
   )
 
+  const defaultTitle = title ? `${title} | ${site.siteMetadata?.title}` :  site.siteMetadata?.title
+  const defaultDescription = description || site.siteMetadata?.description
+
   return (
     <Helmet
       htmlAttributes={{
         lang: "en"
       }}
-      title={site.siteMetadata.title}
+      title={defaultTitle}
       meta={[
         {
           name: "description",
-          content: site.siteMetadata.description
+          content: defaultDescription
         }
       ]}
     />
