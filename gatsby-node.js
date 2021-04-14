@@ -1,4 +1,21 @@
 
+const searchIndex = require("./data/searchIndex.json")
+
+exports.onCreatePage = ({page, actions}) => {
+  const { createPage, deletePage } = actions
+  if (page.path === "/") {
+    deletePage(page)
+    createPage({
+      ...page,
+      context: {
+        ...page.context,
+        searchIndex
+      }
+    })
+  }
+}
+
+
 exports.createPages = async ({graphql, actions: {createPage}}) => {
   const result = await graphql(`
     query {
