@@ -21,7 +21,7 @@ export default function SearchContainer({searchIndex}) {
     searchEngine.addDocuments(searchIndex.blogs)
 
     setSearch(search => ({...search, engine: searchEngine}))
-  }, [])
+  }, [searchIndex])
 
   useEffect(() => {
     rebuildIndex();
