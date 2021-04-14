@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react"
+import { navigate } from "gatsby"
 import * as JsSearch from "js-search"
 import * as styles from "./SearchContainer.module.scss"
 import searchIndex from "./searchIndex.json"
@@ -48,6 +49,7 @@ export default function SearchContainer() {
           <ul>
             { search.results.map(result => (
               <li
+                onClick={() => navigate(`/blogs/${result.slug}`)}
                 role='presentation'
                 key={result.slug}
                 className={`${styles.option} p-2`}>
