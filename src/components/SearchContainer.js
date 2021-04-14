@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import * as JsSearch from "js-search"
 import * as styles from "./SearchContainer.module.scss"
 import searchIndex from "./searchIndex.json"
@@ -7,15 +7,10 @@ export default function SearchContainer() {
   const [search, setSearch] = useState({
     results: [],
     engine: {},
-    query: "Default Value"
+    query: ""
   })
 
-  useEffect(() => {
-    rebuildIndex();
-  }, [])
-
-
-  const rebuildIndex = () => {
+  const rebuildIndex = useCallback(() => {
     const searchEngine = new JsSearch.Search("slug")
     searchEngine.sanitizer = new JsSearch.LowerCaseSanitizer()
     searchEngine.indexStrategy = new JsSearch.PrefixIndexStrategy()
@@ -25,12 +20,18 @@ export default function SearchContainer() {
     searchEngine.addIndex("subtitle")
     searchEngine.addDocuments(searchIndex.blogs)
 
-    setSearch({...search, engine: searchEngine})
-  }
+    setSearch(search => ({...search, engine: searchEngine}))
+  }, [])
+
+  useEffect(() => {
+    rebuildIndex();
+  }, [rebuildIndex])
 
   const performSearch = (e) => {
     setSearch({...search, query: e.target.value})
   }
+
+  console.log(search.query)
 
   return (
     <div>
