@@ -5,15 +5,9 @@ import searchIndex from "./searchIndex.json"
 
 export default function SearchContainer() {
   const [search, setSearch] = useState({
-    results: [{
-      slug: "blog-1",
-      title: "blog 1 title",
-      subtitle: "blog 1 subtitle"
-    }, {
-      slug: "blog-2",
-      title: "blog 2 title",
-      subtitle: "blog 2 subtitle"
-    }]
+    results: [],
+    engine: {},
+    query: "Default Value"
   })
 
   useEffect(() => {
@@ -25,31 +19,24 @@ export default function SearchContainer() {
     const searchEngine = new JsSearch.Search("slug")
     searchEngine.sanitizer = new JsSearch.LowerCaseSanitizer()
     searchEngine.indexStrategy = new JsSearch.PrefixIndexStrategy()
-    // tf - term frequency
-    // Idf - inverse document frequency
-
-    // imagine search for "cat" word
-    // cat is appearing 3 times in the document with 100 words
-    // tf -> 3 / 100 = 0.03
-    // we have 10000000 documents and cat is apperaing in 1000 of them
-    // idf -> log(10 000 000 / 1000) = 4
-    // this will weight document
-    // 0.03 * 4 = 0.12
-
     searchEngine.searchIndex = new JsSearch.TfIdfSearchIndex("slug");
 
     searchEngine.addIndex("title")
     searchEngine.addIndex("subtitle")
     searchEngine.addDocuments(searchIndex.blogs)
 
-    const search1 = searchEngine.search('sby')
-    const search2 = searchEngine.search('gats')
-    debugger
+    setSearch({...search, engine: searchEngine})
+  }
+
+  const performSearch = (e) => {
+    setSearch({...search, query: e.target.value})
   }
 
   return (
     <div>
       <input
+        onChange={performSearch}
+        value={search.query}
         style={{width: "200px"}}
         className="input"
         type="text"
