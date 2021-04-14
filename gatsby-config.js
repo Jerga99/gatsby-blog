@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Filip Tech News",
+    title: "Place to learn coding",
+    description: "The best resource to learn coding online",
     body: {
       content: "Just some SEO content"
     }
