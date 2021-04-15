@@ -30,6 +30,9 @@ export default function IndexPage({data, pageContext}) {
             <SearchContainer
               searchIndex={pageContext.searchIndex} />}
         />
+        <Link className="button is-primary is-small is-outlined" to="/blogs">
+          Read more blogs...
+        </Link>
       </div>
     </Layout>
   )
