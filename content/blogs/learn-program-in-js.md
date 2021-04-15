@@ -5,6 +5,7 @@ date: 2021-10-10
 slug: learn-programming-in-js
 author: Filip Jerga
 rating: 3
+coverImage: https://import.cdn.thinkific.com/335268/8R9DeheYS8CP1Wrtm5Gk_javascript.jpg
 ---
 
 ## Emphasis

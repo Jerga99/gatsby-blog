@@ -5,6 +5,7 @@ date: 2021-05-10
 slug: learn-gatsby-quick
 author: Filip Jerga
 rating: 1
+coverImage: https://import.cdn.thinkific.com/335268/L2JwqFccTlue3rilU5yK_react.jpg
 ---
 
 # h1 Heading 8-)
